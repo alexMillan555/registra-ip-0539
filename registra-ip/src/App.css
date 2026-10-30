@@ -1,3 +1,341 @@
+:root
+{
+  /*Este color de acuerdo con la página dada por la profa, sí cumple con el estándar WCAG AA
+  Esto cumple con la teoría del color debido a:display:
+
+  - Luminosidad: Al tener tan poca cantidad de luz (los valores RGB son muy bajos: R=5, G=5, B=57), el ojo humano lo percibe casi 
+    como un negro.
+
+  - Saturación: Tiene un toque de azul (el valor B destaca sobre R y G), lo que le quita la dureza del negro puro y le da un toque 
+    más elegante y tecnológico.
+
+  - Contraste Simultáneo: El blanco es la ausencia total de color y máxima luminosidad; el #050539 es máxima oscuridad. Al ponerlos 
+    juntos, el cerebro genera un contraste máximo, haciendo que el texto resalte inmediatamente, reduciendo la fatiga visual.
+  
+  */
+  --color-primario: #050539;
+  --color-primario-claro: #1E1E6B; /* Un tono más claro para hovers o bordes */
+  --color-primario-oscuro: #02021A;  /* Casi negro para dar profundidad */
+
+  /* --- FONDOS (Regla 60%) --- */
+  --bg-main: #F8F9FA;             /* Blanco humo: descansa la vista, no es blanco puro */
+  --bg-surface: #FFFFFF;          /* Blanco puro: Para tarjetas y modales (genera contraste) */
+
+  /* --- COLORES SEMÁNTICOS (Estados del sistema) --- */
+  --color-success: #10B981;       /* Verde esmeralda (Disponible/Éxito) */
+  --color-danger: #EF4444;        /* Rojo coral (Ocupado/Error) */
+  --color-warning: #F59E0B;       /* Ámbar (Lista de espera/Advertencia) */
+  --color-info: #3B82F6;          /* Azul brillante (Información neutral) */
+
+  /* --- TEXTO --- */
+  --text-main: #111827;           /* Gris casi negro para lectura (mejor que negro puro) */
+  --text-muted: #6B7280;          /* Gris medio para textos secundarios */
+  --text-inverse: #FFFFFF;        /* Texto blanco para fondos oscuros */
+
+  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-headings: 'Poppins', system-ui, sans-serif;
+
+  /* --- ESCALA TIPOGRÁFICA (Módulo 1.250 - Major Third) --- */
+  --text-xs: 0.75rem;    /* 12px - Para labels o badges */
+  --text-sm: 0.875rem;   /* 14px - Para tablas o textos secundarios */
+  --text-base: 1rem;     /* 16px - El estándar para lectura en pantalla */
+  --text-lg: 1.25rem;    /* 20px - Subtítulos */
+  --text-xl: 1.563rem;   /* 25px - Títulos de sección */
+  --text-2xl: 1.953rem;  /* 31px - Títulos principales (H1) */
+  --text-3xl: 2.441rem;  /* 39px - KPIs grandes del dashboard */
+
+  /* --- PESOS --- */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL (FLEXBOX)
+   ========================================= */
+   .app-container {
+    display: flex;
+    flex-direction: column; /* Apila header, main y footer verticalmente */
+    min-height: 100vh;      /* Ocupa toda la altura de la pantalla */
+    background-color: var(--bg-main);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* =========================================
+     ENCABEZADO (FLEXBOX)
+     ========================================= */
+  .app-header {
+    background-color: var(--color-primary);
+    color: var(--text-inverse);
+    padding: 1rem 2rem;
+    
+    /* Flexbox para alinear el logo a la izquierda y el menú a la derecha */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Espaciado entre el ícono y el texto */
+  }
+  
+  .header-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  
+  /* =========================================
+     NAVEGACIÓN (FLEXBOX)
+     ========================================= */
+  .header-nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .header-nav a {
+    color: var(--text-inverse);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  
+  .header-nav a:hover {
+    color: #F59E0B; /* Un toque de color ámbar al pasar el mouse */
+  }
+  
+  /* =========================================
+     CONTENIDO PRINCIPAL
+     ========================================= */
+  .app-main {
+    flex: 1; /* Hace que el main ocupe todo el espacio sobrante */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido en pantallas grandes */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* =========================================
+     PIE DE PÁGINA
+     ========================================= */
+  .app-footer {
+    background-color: var(--bg-surface);
+    color: #6B7280;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    border-top: 1px solid #E5E7EB;
+  }
+  
+  /* =========================================
+     RESPONSIVE DESIGN (MEDIA QUERY < 600px)
+     ========================================= */
+  @media (max-width: 600px) {
+    .app-header {
+      /* En móviles, apilamos el logo y el menú verticalmente */
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+    }
+  
+    .header-title {
+      font-size: 1.25rem; /* Reducimos el título */
+    }
+  
+    .header-nav {
+      width: 100%;
+      justify-content: center; /* Centramos los enlaces */
+      gap: 1rem;
+    }
+  
+    .app-main {
+      padding: 1rem; /* Menos padding en móviles para aprovechar el espacio */
+    }
+  }
+
+  /*REGISTRO*/
+
+  .registro-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-md, 8px);
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0,0,0,0.05));
+  }
+  
+  .registro-title {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--text-main);
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  /* Efecto de foco (Ergonomía visual) */
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(5, 5, 57, 0.1);
+  }
+  
+  .btn-submit {
+    background-color: var(--color-primary, #050539); /* Fallback si la variable no existe */
+    color: #FFFFFF;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+    width: 100%; /* Asegura que se vea */
+    display: block; /* Asegura que no esté oculto */
+  }
+  
+  .btn-submit:hover {
+    background-color: var(--color-primary-light, #1E1E6B);
+    color: #FFFFFF; /* Asegura que el texto siga visible */
+  }
+
+  .input-error {
+    border-color: #EF4444 !important; /* Rojo de error */
+  }
+  
+  .input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+  }
+  
+  /* Mensajes de error */
+  .error-msg {
+    color: #EF4444;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: block;
+  }
+  
+  /* Contenedor de errores generales */
+  .errores-generales {
+    min-height: 24px; /* Para que no salte el layout cuando aparece */
+  }
+  
+  .errores-generales p {
+    color: #EF4444;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+  }
+
+  /*DASHBOARD*/
+
+  .dashboard-container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* =========================================
+     HEADER DEL DASHBOARD (FLEXBOX)
+     ========================================= */
+  .dashboard-header {
+    background-color: var(--bg-surface);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md, 8px);
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--color-primary);
+  }
+  
+  .dashboard-title {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .dashboard-subtitle {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
+  /* =========================================
+     BOTÓN DE CERRAR SESIÓN
+     ========================================= */
+  .btn-logout {
+    background-color: transparent;
+    color: #EF4444; /* Rojo de peligro */
+    border: 1px solid #EF4444;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-logout:hover {
+    background-color: #EF4444;
+    color: white;
+  }
+  
+  /* =========================================
+     RESPONSIVE (MÓVILES)
+     ========================================= */
+  @media (max-width: 600px) {
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .btn-logout {
+      width: 100%; /* En móvil, el botón ocupa todo el ancho */
+    }
+  }
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
