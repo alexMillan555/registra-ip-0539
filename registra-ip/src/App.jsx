@@ -5,6 +5,7 @@ import Registro from './pages/Registro';
 import Dashboard from './pages/Dashboard';
 import RegistrarObra from './pages/RegistrarObra';
 import ObraDetalle from './pages/ObraDetalle'; // 🔑 NUEVO IMPORT
+import Galeria from './pages/Galeria'; // 🔑 NUEVO IMPORT
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         
         {/* 🔑 NUEVA RUTA DINÁMICA: El ":folio" es un parámetro de la URL */}
         <Route path="/obra/:folio" element={<RutaProtegida><ObraDetalle /></RutaProtegida>} />
+        <Route path="/galeria" element={<RutaProtegida><Galeria /></RutaProtegida>} />
       </Routes>
     </Layout>
   );
