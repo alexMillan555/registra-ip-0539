@@ -1194,6 +1194,218 @@
   }
 }
 
+/* =========================================
+   BOTÓN DESCARGAR CERTIFICADO
+   ========================================= */
+   .btn-descargar-certificado {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #D4AF37 0%, #FCD34D 100%);
+    color: #050539;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  }
+  
+  .btn-descargar-certificado:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+  }
+  
+  .btn-descargar-certificado:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .detalle-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .btn-volver {
+    background: transparent;
+    border: none;
+    color: #6B7280;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  
+  .btn-volver:hover {
+    color: #050539;
+  }
+  
+  .detalle-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  
+  @media (max-width: 768px) {
+    .detalle-card {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Imagen */
+  .detalle-imagen-container {
+    background: #F3F4F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    height: 100%;
+  }
+  
+  .detalle-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .detalle-sin-imagen {
+    color: #9CA3AF;
+    font-size: 1.5rem;
+  }
+  
+  /* Info */
+  .detalle-info {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detalle-folio {
+    display: inline-block;
+    align-self: flex-start;
+    background: #050539;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .detalle-titulo {
+    font-size: 2rem;
+    color: #111827;
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+  }
+  
+  .detalle-metadatos {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Empuja las acciones hacia abajo */
+  }
+  
+  .metadato-fila {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .metadato-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6B7280;
+    font-weight: 600;
+  }
+  
+  .metadato-valor {
+    font-size: 1.05rem;
+    color: #111827;
+    line-height: 1.5;
+  }
+  
+  .detalle-badge {
+    display: inline-block;
+    background: #FCD34D;
+    color: #78350F;
+    padding: 0.2rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  /* Acciones */
+  .detalle-acciones {
+    margin-top: 1rem;
+  }
+  
+  .btn-descargar-grande {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #050539 0%, #1E1E6B 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(5, 5, 57, 0.3);
+  }
+  
+  .btn-descargar-grande:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(5, 5, 57, 0.4);
+  }
+  
+  .btn-descargar-grande:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .detalle-cargando, .detalle-error {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 1.2rem;
+    color: #6B7280;
+  }
+  
+  .detalle-error a {
+    color: #050539;
+    font-weight: bold;
+  }
+
+  .btn-ver-detalle {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: #F3F4F6;
+    color: #050539;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-ver-detalle:hover {
+    background: #050539;
+    color: white;
+    border-color: #050539;
+  }
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

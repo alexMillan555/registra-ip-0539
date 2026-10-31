@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import Registro from './pages/Registro';
 import RutaProtegida from './RutaProtegida';
-import Dashboard from './pages/Dashboard'; // Asume que ya creaste este componente
+import Registro from './pages/Registro';
+import Dashboard from './pages/Dashboard';
 import RegistrarObra from './pages/RegistrarObra';
+import ObraDetalle from './pages/ObraDetalle'; // 🔑 NUEVO IMPORT
 
 function App() {
   return (
@@ -12,23 +13,12 @@ function App() {
         {/* Ruta pública */}
         <Route path="/" element={<Registro />} />
         
-        {/* Ruta protegida */}
-        <Route 
-          path="/dashboard" 
-          element={
-            <RutaProtegida>
-              <Dashboard />
-            </RutaProtegida>
-          } 
-        />
-        <Route 
-          path="/registrar-obra" 
-          element={
-            <RutaProtegida>
-              <RegistrarObra />
-            </RutaProtegida>
-          } 
-        />
+        {/* Rutas protegidas */}
+        <Route path="/dashboard" element={<RutaProtegida><Dashboard /></RutaProtegida>} />
+        <Route path="/registrar-obra" element={<RutaProtegida><RegistrarObra /></RutaProtegida>} />
+        
+        {/* 🔑 NUEVA RUTA DINÁMICA: El ":folio" es un parámetro de la URL */}
+        <Route path="/obra/:folio" element={<RutaProtegida><ObraDetalle /></RutaProtegida>} />
       </Routes>
     </Layout>
   );
